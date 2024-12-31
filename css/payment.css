@@ -1,0 +1,105 @@
+/* Payment Page Styles */
+.payment-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.payment-option {
+    cursor: pointer;
+}
+
+.payment-option input[type="radio"] {
+    display: none;
+}
+
+.option-content {
+    border: 2px solid #ddd;
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.payment-option input[type="radio"]:checked + .option-content {
+    border-color: var(--color-primary);
+    background: rgba(var(--color-primary-rgb), 0.05);
+}
+
+.option-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.option-header i {
+    font-size: 24px;
+    color: var(--color-primary);
+}
+
+.option-text h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 5px;
+}
+
+.option-text p {
+    font-size: 14px;
+    color: #666;
+}
+
+.option-content .price {
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.confirm-payment-btn {
+    width: 100%;
+    padding: 15px 30px;
+    background: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+}
+
+.confirm-payment-btn:hover {
+    background: var(--color-primary-dark);
+    transform: translateY(-2px);
+}
+
+/* Step Indicators */
+.step.completed .step-number {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: white;
+}
+
+.step.completed + .step-line {
+    background: var(--color-primary);
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+    .option-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+
+    .option-header {
+        flex-direction: column;
+        text-align: center;
+    }
+}

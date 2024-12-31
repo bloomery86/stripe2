@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comandă Finalizată - Bloomery</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        .success-container {
+            max-width: 800px;
+            margin: 50px auto;
+            text-align: center;
+            padding: 40px 20px;
+        }
+        .success-icon {
+            color: #4CAF50;
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+        .success-title {
+            font-size: 32px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .success-message {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        .button {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #ff4b6e;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+            margin: 0 10px 30px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .button:hover {
+            background-color: #e6405f;
+        }
+        .button.secondary {
+            background-color: #666;
+        }
+        .button.secondary:hover {
+            background-color: #555;
+        }
+        .button i {
+            margin-right: 8px;
+        }
+        .buttons-container {
+            margin: 20px 0;
+        }
+        .order-details {
+            text-align: left;
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        .order-details h2 {
+            color: #333;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+        .order-details h3 {
+            color: #444;
+            margin: 20px 0 10px;
+        }
+        .order-details p {
+            margin: 10px 0;
+            color: #666;
+        }
+        .order-details strong {
+            color: #333;
+        }
+        .total-section {
+            margin-top: 20px;
+            border-top: 1px solid #ddd;
+            padding-top: 10px;
+        }
+        .total-section p:last-child {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                padding: 0;
+                margin: 0;
+            }
+            .success-container {
+                margin: 0;
+                padding: 20px;
+            }
+            .buttons-container,
+            .success-icon,
+            .back-button,
+            .debug-section {
+                display: none !important;
+            }
+            .order-details {
+                background: none;
+                padding: 0;
+                margin: 0;
+            }
+            .success-title {
+                font-size: 24px;
+                margin: 20px 0;
+            }
+            .success-message {
+                margin: 10px 0;
+            }
+            @page {
+                margin: 2cm;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="success-container" id="loadingContainer">
+        <div class="loading-spinner">
+            <i class="fas fa-spinner fa-spin"></i>
+        </div>
+        <p>Se procesează comanda...</p>
+    </div>
+
+    <div class="success-container" id="successContainer" style="display: none;">
+        <i class="fas fa-check-circle success-icon"></i>
+        <h1 class="success-title">Comandă Finalizată cu Succes!</h1>
+        <p class="success-message">
+            Vă mulțumim pentru comandă #<span id="orderNumber"></span>!
+            <br>
+            Echipa noastră va procesa comanda dumneavoastră cât mai curând posibil.
+        </p>
+
+        <div id="orderDetails" class="order-details">
+            <h2>Detalii Comandă</h2>
+            <!-- Order details will be populated by JavaScript -->
+        </div>
+
+        <div class="buttons-container">
+            <button onclick="window.print()" class="button secondary">
+                <i class="fas fa-print"></i>
+                Printează Comanda
+            </button>
+            <a href="index.html" class="button">
+                <i class="fas fa-home"></i>
+                Înapoi la Pagina Principală
+            </a>
+        </div>
+
+        <div class="debug-section" style="display: none;">
+            <h2 class="debug-title">Debug Information</h2>
+            <div id="debugInfo" class="debug-info">
+                <div class="debug-item">Loading debug information...</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="success-container" id="errorContainer" style="display: none;">
+        <i class="fas fa-exclamation-circle error-icon"></i>
+        <h1 class="error-title">A apărut o eroare</h1>
+        <p class="error-message" id="errorMessage">
+            Ne cerem scuze, dar a apărut o eroare în procesarea comenzii.
+        </p>
+        <a href="checkout.html" class="back-button">
+            <i class="fas fa-arrow-left"></i>
+            Înapoi la Checkout
+        </a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async function() {
+            const loadingContainer = document.getElementById('loadingContainer');
+            const successContainer = document.getElementById('successContainer');
+            const errorContainer = document.getElementById('errorContainer');
+            const orderDetailsContainer = document.getElementById('orderDetails');
+
+            try {
+                // Get URL parameters
+                const urlParams = new URLSearchParams(window.location.search);
+                const sessionId = urlParams.get('session_id');
+                const orderNumber = urlParams.get('order_number');
+
+                if (!sessionId || !orderNumber) {
+                    throw new Error('Missing required parameters');
+                }
+
+                // Get pending order number from sessionStorage
+                const pendingOrderNumber = sessionStorage.getItem('pendingOrderNumber');
+                
+                // Verify order number matches
+                if (pendingOrderNumber !== orderNumber) {
+                    console.error('Order number mismatch:', { pending: pendingOrderNumber, received: orderNumber });
+                    throw new Error('Invalid order number');
+                }
+
+                // Clear cart and delivery data
+                localStorage.removeItem('cart');
+                localStorage.removeItem('deliveryData');
+                sessionStorage.removeItem('pendingOrderNumber');
+
+                // Show success message
+                loadingContainer.style.display = 'none';
+                successContainer.style.display = 'block';
+
+                // Update order number in the message
+                const orderNumberElement = document.getElementById('orderNumber');
+                if (orderNumberElement) {
+                    orderNumberElement.textContent = orderNumber;
+                }
+
+                // Get order data from localStorage
+                const orderData = JSON.parse(localStorage.getItem('orderData'));
+                if (orderData && orderDetailsContainer) {
+                    const subtotal = orderData.cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+                    const shipping = orderData.delivery.deliveryMethod === 'pickup' ? 0 : 15;
+                    const total = subtotal + shipping;
+
+                    orderDetailsContainer.innerHTML = `
+                        <h2>Detalii Comandă #${orderData.orderNumber}</h2>
+                        <p><strong>Data:</strong> ${new Date(orderData.date).toLocaleString('ro-RO')}</p>
+                        
+                        <h3>Date Client</h3>
+                        <p><strong>Nume:</strong> ${orderData.delivery.firstName} ${orderData.delivery.lastName}</p>
+                        <p><strong>Email:</strong> ${orderData.delivery.email}</p>
+                        <p><strong>Telefon:</strong> ${orderData.delivery.phone}</p>
+                        
+                        <h3>Detalii Livrare</h3>
+                        <p><strong>Metoda:</strong> ${orderData.delivery.deliveryMethod === 'pickup' ? 'Ridicare din Magazin' : 'Curier'}</p>
+                        <p><strong>Adresa:</strong> ${orderData.delivery.deliveryMethod === 'pickup' ? 'Ridicare din magazin' : `${orderData.delivery.address}, ${orderData.delivery.county}`}</p>
+                        
+                        <h3>Produse Comandate</h3>
+                        ${orderData.cart.map(item => `
+                            <div style="display: flex; justify-content: space-between; margin: 10px 0; padding: 5px 0; border-bottom: 1px solid #eee;">
+                                <div style="flex: 1;">
+                                    <strong>${item.name}</strong>
+                                </div>
+                                <div style="text-align: right; white-space: nowrap;">
+                                    ${item.quantity} x ${item.price} lei = ${item.price * item.quantity} lei
+                                </div>
+                            </div>
+                        `).join('')}
+                        
+                        <div class="total-section">
+                            <p><strong>Subtotal:</strong> <span style="float: right;">${subtotal} lei</span></p>
+                            <p><strong>Transport:</strong> <span style="float: right;">${shipping === 0 ? 'Gratuit' : `${shipping} lei`}</span></p>
+                            <p><strong>Total Comandă:</strong> <span style="float: right;">${total} lei</span></p>
+                        </div>
+                    `;
+                }
+
+            } catch (error) {
+                console.error('Error processing success page:', error);
+                loadingContainer.style.display = 'none';
+                errorContainer.style.display = 'block';
+                
+                const errorMessage = document.getElementById('errorMessage');
+                if (errorMessage) {
+                    errorMessage.textContent = error.message || 'A apărut o eroare la procesarea comenzii.';
+                }
+            }
+        });
+    </script>
+</body>
+</html>

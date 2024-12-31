@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blooms - Flower Store</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.5;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+            color: white;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+        }
+
+        .hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 1rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(4rem, 10vw, 9rem);
+            font-weight: 300;
+            margin: 1.5rem 0;
+            letter-spacing: -0.05em;
+        }
+
+        .hero p {
+            font-size: clamp(1.25rem, 2vw, 1.5rem);
+            font-weight: 300;
+            max-width: 36rem;
+            letter-spacing: 0.05em;
+        }
+
+        /* Products Section */
+        .products {
+            min-height: 100vh;
+            background: rgb(10, 10, 10);
+            color: white;
+            padding: 5rem 1rem;
+        }
+
+        .products-container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .product-showcase {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        @media (min-width: 768px) {
+            .product-showcase {
+                flex-direction: row;
+                align-items: center;
+            }
+        }
+
+        .product-info {
+            flex: 1;
+        }
+
+        .product-category {
+            color: #a3a3a3;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            font-size: 0.875rem;
+        }
+
+        .product-name {
+            font-size: 3.75rem;
+            font-weight: 300;
+            margin: 1rem 0;
+        }
+
+        .product-description {
+            color: #a3a3a3;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-price {
+            font-size: 1.875rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: white;
+            color: black;
+        }
+
+        .btn-primary:hover {
+            background: #e5e5e5;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid white;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: black;
+        }
+
+        .product-nav {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-btn {
+            padding: 0.5rem;
+            border: none;
+            background: transparent;
+            color: white;
+            cursor: pointer;
+            border-radius: 9999px;
+            transition: all 0.3s;
+        }
+
+        .nav-btn:hover {
+            background: white;
+            color: black;
+        }
+
+        .product-image-container {
+            flex: 1;
+            position: relative;
+            aspect-ratio: 3/4;
+            width: 100%;
+        }
+
+        .product-image-bg {
+            position: absolute;
+            inset: 0;
+            background: #171717;
+            transform: rotate(-2deg);
+        }
+
+        .product-image {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: rotate(2deg);
+            transition: transform 0.7s;
+        }
+
+        /* About Section */
+        .about {
+            min-height: 100vh;
+            background: white;
+            padding: 5rem 1rem;
+        }
+
+        .about-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 5rem;
+        }
+
+        @media (min-width: 768px) {
+            .about-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .about-image {
+            position: relative;
+            aspect-ratio: 4/5;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .about-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            gap: 5rem;
+        }
+
+        .about-header span {
+            color: #525252;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            font-size: 0.875rem;
+        }
+
+        .about-header h2 {
+            font-size: 3rem;
+            font-weight: 300;
+            margin: 2rem 0;
+        }
+
+        .about-header p {
+            color: #525252;
+            font-size: 1.25rem;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .stat-value {
+            font-size: 2.25rem;
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #525252;
+        }
+
+        .about-sections h3 {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+        }
+
+        .about-sections p {
+            color: #525252;
+            margin-bottom: 3rem;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-bg">
+                <img src="https://picsum.photos/id/152/1920/1080" alt="Flowers">
+            </div>
+            <div class="hero-content">
+                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flower" style="animation: spin 20s linear infinite;">
+                    <path d="M12 7.5a4.5 4.5 0 1 1 4.5 4.5M12 7.5A4.5 4.5 0 1 0 7.5 12M12 7.5V9m-4.5 3a4.5 4.5 0 1 0 4.5 4.5M7.5 12H9m7.5 0a4.5 4.5 0 1 1-4.5 4.5m4.5-4.5H15m-3 4.5V15"/>
+                    <circle cx="12" cy="12" r="3"/>
+                    <path d="m8 16 1.5-1.5"/>
+                    <path d="M14.5 9.5 16 8"/>
+                    <path d="m8 8 1.5 1.5"/>
+                    <path d="M14.5 14.5 16 16"/>
+                </svg>
+                <h1>blooms</h1>
+                <p>Curating nature's finest expressions through artisanal floral designs</p>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section class="products">
+            <div class="products-container">
+                <div class="product-showcase">
+                    <div class="product-info">
+                        <span class="product-category" id="product-category"></span>
+                        <h2 class="product-name" id="product-name"></h2>
+                        <p class="product-description" id="product-description"></p>
+                        <p class="product-price" id="product-price"></p>
+                        
+                        <div class="product-actions">
+                            <button class="btn btn-primary">Order Now</button>
+                            <button class="btn btn-secondary">View Details</button>
+                        </div>
+
+                        <div class="product-nav">
+                            <button class="nav-btn" id="prev-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                            </button>
+                            <span id="product-counter"></span>
+                            <button class="nav-btn" id="next-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="product-image-container">
+                        <div class="product-image-bg"></div>
+                        <img id="product-image" class="product-image" src="" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about">
+            <div class="about-container">
+                <div class="about-image">
+                    <img src="https://picsum.photos/id/442/800/1000" alt="Our Story">
+                </div>
+                
+                <div class="about-content">
+                    <div class="about-header">
+                        <span>Our Story</span>
+                        <h2>Crafting Nature's Poetry Since 2008</h2>
+                        <p>In the heart of the city, we began our journey with a simple yet profound mission: 
+                           to transform nature's most beautiful expressions into artful arrangements that tell 
+                           stories and capture moments.</p>
+                    </div>
+
+                    <div class="stats">
+                        <div>
+                            <div class="stat-value">15+</div>
+                            <div class="stat-label">Years of Experience</div>
+                        </div>
+                        <div>
+                            <div class="stat-value">1000+</div>
+                            <div class="stat-label">Unique Arrangements</div>
+                        </div>
+                        <div>
+                            <div class="stat-value">5000+</div>
+                            <div class="stat-label">Happy Clients</div>
+                        </div>
+                    </div>
+
+                    <div class="about-sections">
+                        <div>
+                            <h3>Our Philosophy</h3>
+                            <p>We believe in the power of flowers to transform spaces and emotions. 
+                               Each arrangement is a unique composition, carefully crafted to bring 
+                               nature's beauty into your everyday moments.</p>
+                        </div>
+
+                        <div>
+                            <h3>Our Process</h3>
+                            <p>From selecting the finest blooms at dawn to arranging each stem with 
+                               purpose, our process is rooted in attention to detail and a deep 
+                               respect for nature's perfection.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const products = [
+            {
+                id: 1,
+                name: 'Summer Breeze',
+                description: 'A vibrant mix of seasonal blooms',
+                price: '$89',
+                image: 'https://picsum.photos/id/431/800/1000',
+                category: 'Seasonal'
+            },
+            {
+                id: 2,
+                name: 'Pink Dreams',
+                description: 'Delicate roses and peonies',
+                price: '$79',
+                image: 'https://picsum.photos/id/432/800/1000',
+                category: 'Bouquets'
+            },
+            {
+                id: 3,
+                name: 'Wild Garden',
+                description: 'Untamed beauty of wildflowers',
+                price: '$99',
+                image: 'https://picsum.photos/id/433/800/1000',
+                category: 'Natural'
+            }
+        ];
+
+        let activeIndex = 0;
+
+        const updateProduct = () => {
+            const product = products[activeIndex];
+            document.getElementById('product-category').textContent = product.category;
+            document.getElementById('product-name').textContent = product.name;
+            document.getElementById('product-description').textContent = product.description;
+            document.getElementById('product-price').textContent = product.price;
+            document.getElementById('product-image').src = product.image;
+            document.getElementById('product-counter').textContent = `${activeIndex + 1} / ${products.length}`;
+        };
+
+        document.getElementById('next-btn').addEventListener('click', () => {
+            activeIndex = (activeIndex + 1) % products.length;
+            updateProduct();
+        });
+
+        document.getElementById('prev-btn').addEventListener('click', () => {
+            activeIndex = (activeIndex - 1 + products.length) % products.length;
+            updateProduct();
+        });
+
+        // Initialize first product
+        updateProduct();
+
+        // Add spin animation for flower icon
+        document.querySelector('.flower').style.animation = 'spin 20s linear infinite';
+    </script>
+</body>
+</html>

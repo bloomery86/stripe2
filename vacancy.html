@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Dark Website</title>
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            background: #1a1a1a;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+       
+        }
+
+        a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: rgba(0, 0, 0, 0.7);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar__logo {
+            font-size: 24px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .navbar__menu {
+            display: flex;
+            gap: 30px;
+        }
+
+        .navbar__menu a {
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        .navbar__menu a:hover {
+            color: #ff6f61;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://picsum.photos/1920/1080?random=1');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero__content {
+            max-width: 800px;
+        }
+
+        .hero__title {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .hero__subtitle {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        .hero__button {
+            padding: 15px 30px;
+            background: #ff6f61;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .hero__button:hover {
+            background: #e65a50;
+        }
+
+        /* Carousel Section */
+        .section {
+            padding: 100px 50px;
+            text-align: center;
+        }
+
+        .section__title {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 50px;
+        }
+
+        .carousel {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            perspective: 1000px;
+        }
+
+        .carousel__container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform-style: preserve-3d;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel__card {
+            position: absolute;
+            width: 300px;
+            height: 400px;
+            background: #333;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+        }
+
+        .carousel__card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card__content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            text-align: center;
+        }
+
+        .carousel__button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: #fff;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 50%;
+            transition: background 0.3s ease;
+        }
+
+        .carousel__button:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        .carousel__button--prev {
+            left: 20px;
+        }
+
+        .carousel__button--next {
+            right: 20px;
+        }
+
+                /* Navbar */
+                .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: rgba(0, 0, 0, 0.7);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar__logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .navbar__menu {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .navbar__menu a {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.7);
+            transition: color 0.3s ease;
+        }
+
+        .navbar__menu a:hover {
+            color: #fff;
+        }
+
+        .navbar__remaining {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 16px;
+            border-radius: 20px;
+        }
+
+               /* Navbar */
+               .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px; /* Adjusted padding for left and right */
+            background: rgba(0, 0, 0, 0.7);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar__logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .navbar__menu {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .navbar__menu a {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.7);
+            transition: color 0.3s ease;
+        }
+
+        .navbar__menu a:hover {
+            color: #fff;
+        }
+
+        .navbar__remaining {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 16px;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body>
+<!-- Navbar -->
+<nav class="navbar">
+    <div class="navbar__logo">Untitled UI</div>
+    <div class="navbar__menu">
+        <a href="#home">Home</a>
+        <a href="#dashboard">Dashboard</a>
+        <a href="#projects">Projects</a>
+        <a href="#tasks">Tasks</a>
+        <a href="#reporting">Reporting</a>
+        <a href="#users">Users</a>
+        <div class="navbar__remaining">12 days remaining</div>
+    </div>
+</nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero__content">
+            <h1 class="hero__title">Welcome to the Future</h1>
+            <p class="hero__subtitle">Experience the next level of design and innovation.</p>
+            <button class="hero__button">Get Started</button>
+        </div>
+    </section>
+
+    <!-- Carousel Section -->
+    <section id="carousel" class="section">
+        <h2 class="section__title">Featured Projects</h2>
+        <div class="carousel">
+            <div class="carousel__container">
+                <div class="carousel__card">
+                    <img src="https://picsum.photos/800/600?random=1" alt="Image 1">
+                    <div class="card__content">
+                        <h3>Project 1</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+                </div>
+                <div class="carousel__card">
+                    <img src="https://picsum.photos/800/600?random=2" alt="Image 2">
+                    <div class="card__content">
+                        <h3>Project 2</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+                </div>
+                <div class="carousel__card">
+                    <img src="https://picsum.photos/800/600?random=3" alt="Image 3">
+                    <div class="card__content">
+                        <h3>Project 3</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+                </div>
+                <div class="carousel__card">
+                    <img src="https://picsum.photos/800/600?random=4" alt="Image 4">
+                    <div class="card__content">
+                        <h3>Project 4</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel__button carousel__button--prev">&#10094;</button>
+            <button class="carousel__button carousel__button--next">&#10095;</button>
+        </div>
+    </section>
+
+    <script>
+        // Carousel Logic
+        const carouselContainer = document.querySelector('.carousel__container');
+        const cards = document.querySelectorAll('.carousel__card');
+        const prevButton = document.querySelector('.carousel__button--prev');
+        const nextButton = document.querySelector('.carousel__button--next');
+
+        let currentIndex = 0;
+        const totalCards = cards.length;
+        const angle = 360 / totalCards;
+
+        function updateCarousel() {
+            cards.forEach((card, index) => {
+                const rotateY = (index - currentIndex) * angle;
+                const translateZ = -300;
+                card.style.transform = `rotateY(${rotateY}deg) translateZ(${translateZ}px)`;
+                card.style.opacity = index === currentIndex ? 1 : 0.5;
+            });
+        }
+
+        prevButton.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + totalCards) % totalCards;
+            updateCarousel();
+        });
+
+        nextButton.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % totalCards;
+            updateCarousel();
+        });
+
+        updateCarousel();
+    </script>
+</body>
+</html>

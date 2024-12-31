@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toate Produsele - Bloomery</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/cart.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        .products-section {
+            padding: 80px 0;
+            background-color: var(--color-background);
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        @media (max-width: 1024px) {
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 768px) {
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Footer Styles */
+        .footer {
+            background-color: var(--color-dark);
+            color: var(--color-light);
+            padding: 60px 0 0;
+        }
+
+        .footer-content {
+            position: relative;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            padding: 0 20px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            color: var(--color-light);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 15px;
+        }
+
+        .footer-section a {
+            color: var(--color-light-gray);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--color-primary);
+        }
+
+        .contact-section ul li {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .contact-section i {
+            color: var(--color-primary);
+            font-size: 1.2rem;
+            margin-top: 4px;
+        }
+
+        .contact-section div {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-section span {
+            color: var(--color-light-gray);
+            font-size: 0.9rem;
+        }
+
+        .schedule-list li {
+            display: flex;
+            justify-content: space-between;
+            color: var(--color-light-gray);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background-color: var(--color-primary);
+        }
+
+        .footer-bottom {
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+
+        .footer-bottom-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .payment-methods {
+            display: flex;
+            gap: 15px;
+            color: var(--color-light-gray);
+        }
+
+        @media (max-width: 992px) {
+            .footer-top {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .footer-top {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom-content {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+        }
+
+        /* Pagination Styles */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin: 20px 0;
+            flex-direction: row;
+        }
+
+        .pagination-numbers {
+            display: flex;
+            gap: 5px;
+            flex-direction: row;
+        }
+
+        .pagination-button {
+            padding: 8px 16px;
+            border: 1px solid #ddd;
+            background-color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+            min-width: 40px;
+        }
+
+        .pagination-button:hover {
+            background-color: #f5f5f5;
+        }
+
+        .pagination-button.active {
+            background-color: #4CAF50;
+            color: white;
+            border-color: #4CAF50;
+        }
+
+        .pagination-button.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .pagination-button i {
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 576px) {
+            .pagination {
+                gap: 5px;
+            }
+
+            .pagination-button {
+                width: 35px;
+                height: 35px;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="main-header">
+            <div class="container">
+                <div class="logo">
+                    <a href="./index.html">
+                        <i class="fas fa-flower"></i>
+                        <span class="logo-text">BLOOM<span class="accent">ERY</span></span>
+                    </a>
+                </div>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="./index.html"><i class="fas fa-seedling"></i> Acasa</a></li>
+                        <li><a href="#bestsellers"><i class="fas fa-crown"></i> Bestsellers</a></li>
+                        <li><a href="./noutati.html"><i class="fas fa-leaf"></i> Colecții</a></li>
+                        <li><a href="./despre-noi.html"><i class="fas fa-heart"></i> Despre Noi</a></li>
+                    </ul>
+                </nav>
+                <div class="header-actions">
+                    <a href="#search" class="action-icon search-icon" title="Căutare">
+                        <i class="fas fa-search"></i>
+                    </a>
+                    <a href="#account" class="action-icon account-icon" title="Contul Meu">
+                        <i class="fas fa-user"></i>
+                    </a>
+                    <div class="cart-wrapper">
+                        <a href="#cart" class="action-icon cart-icon" title="Coș">
+                            <i class="fas fa-shopping-basket"></i>
+                            <span class="cart-count">0</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Products Section -->
+    <section class="products-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-accent">Colecția Noastră Completă</span>
+                <h1 class="section-title">Buchete și Aranjamente Florale</h1>
+                <p class="section-subtitle">Descoperă întreaga noastră colecție de buchete și aranjamente florale create cu pasiune</p>
+            </div>
+
+            <div class="product-grid" id="productGrid">
+                <!-- Products will be dynamically inserted here -->
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <button class="pagination-button" id="prevPage" aria-label="Previous page">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div id="paginationNumbers" class="pagination-numbers">
+                    <!-- Page numbers will be dynamically inserted here -->
+                </div>
+                <button class="pagination-button" id="nextPage" aria-label="Next page">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-top">
+                <div class="footer-section contact-section">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <span>Telefon</span>
+                                <a href="tel:+40722123456">+40 722 123 456</a>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <span>Email</span>
+                                <a href="mailto:contact@bloomery.ro">contact@bloomery.ro</a>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <span>Adresă</span>
+                                <a href="https://goo.gl/maps" target="_blank">Strada Florilor 123, București</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-section links-section">
+                    <h3>Informații Utile</h3>
+                    <ul>
+                        <li><a href="./despre-noi.html">Despre Noi</a></li>
+                        <li><a href="#">Termeni și Condiții</a></li>
+                        <li><a href="#">Politica de Confidențialitate</a></li>
+                        <li><a href="#">Politica de Retur</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section schedule-section">
+                    <h3>Program</h3>
+                    <ul class="schedule-list">
+                        <li>
+                            <span class="day">Luni - Vineri</span>
+                            <span class="hours">09:00 - 20:00</span>
+                        </li>
+                        <li>
+                            <span class="day">Sâmbătă</span>
+                            <span class="hours">10:00 - 18:00</span>
+                        </li>
+                        <li>
+                            <span class="day">Duminică</span>
+                            <span class="hours">10:00 - 16:00</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-section social-section">
+                    <h3>Urmărește-ne</h3>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Pinterest">
+                            <i class="fab fa-pinterest-p"></i>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="TikTok">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2024 Bloomery. Toate drepturile rezervate.</p>
+                    <div class="payment-methods">
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
+                        <i class="fab fa-apple-pay"></i>
+                        <i class="fab fa-google-pay"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div id="cartModal" class="cart-modal">
+        <div class="cart-modal-content">
+            <div class="cart-modal-header">
+                <h2>Coșul meu</h2>
+                <button class="close-cart">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="cart-items-container">
+                <!-- Cart items will be dynamically added here -->
+            </div>
+            <div class="cart-summary">
+                <div class="cart-total">
+                    <span class="total-label">Total</span>
+                    <span class="total-amount">0.00 RON</span>
+                </div>
+                <button class="checkout-button">
+                    Finalizează Comanda
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/products.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize smooth scrolling
+            const lenis = new Lenis({
+                duration: 1.8,
+                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                smooth: true,
+                smoothWheel: true,
+                smoothTouch: false,
+                touchMultiplier: 1.5,
+                infinite: false,
+                wheelMultiplier: 0.8,
+                lerp: 0.1,
+            });
+
+            function raf(time) {
+                lenis.raf(time);
+                requestAnimationFrame(raf);
+            }
+
+            requestAnimationFrame(raf);
+
+            lenis.on('scroll', ScrollTrigger.update);
+            gsap.ticker.add((time) => {
+                lenis.raf(time * 1000);
+            });
+            gsap.ticker.lagSmoothing(0);
+
+            // Product rendering and pagination functionality
+            const productsPerPage = 9; // Changed to 9 products per page
+            const productGrid = document.getElementById('productGrid');
+            const paginationNumbers = document.getElementById('paginationNumbers');
+            let currentPage = 1;
+
+            // Calculate savings amount
+            function calculateSavings(originalPrice, currentPrice) {
+                return originalPrice - currentPrice;
+            }
+
+            // Format price with RON currency
+            function formatPrice(price) {
+                return price.toLocaleString('ro-RO') + ' RON';
+            }
+
+            // Generate star rating HTML
+            function generateStarRating(rating) {
+                const fullStars = Math.floor(rating);
+                const hasHalfStar = rating % 1 !== 0;
+                let starsHtml = '';
+
+                for (let i = 0; i < fullStars; i++) {
+                    starsHtml += '<i class="fas fa-star"></i>';
+                }
+                if (hasHalfStar) {
+                    starsHtml += '<i class="fas fa-star-half-alt"></i>';
+                }
+                const emptyStars = 5 - Math.ceil(rating);
+                for (let i = 0; i < emptyStars; i++) {
+                    starsHtml += '<i class="far fa-star"></i>';
+                }
+
+                return starsHtml;
+            }
+
+            // Create product card HTML
+            function createProductCard(product) {
+                const savings = calculateSavings(product.originalPrice, product.price);
+                return `
+                    <div class="product-card">
+                        <a href="product-detail.html?id=${product.id}" class="product-link">
+                            <div class="product-image">
+                                <img src="${product.images[0]}" alt="${product.name}">
+                                <span class="product-badge">Luxury</span>
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-description">${product.name}</h3>
+                                <div class="product-rating">
+                                    <div class="stars">
+                                        ${generateStarRating(product.rating)}
+                                    </div>
+                                    <span class="rating-count">(${product.rating}/5 din ${product.reviews} review-uri)</span>
+                                </div>
+                                <div class="price-cart">
+                                    <div class="price-info">
+                                        <span class="original-price">${formatPrice(product.originalPrice)}</span>
+                                        <span class="price">${formatPrice(product.price)}</span>
+                                        <span class="save-amount">Economisești: ${formatPrice(savings)}</span>
+                                        <span class="availability">In stoc - Livrare Rapidă</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <button class="add-to-cart" data-id="${product.id}" data-name="${product.name}" data-price="${product.price}" data-image="${product.images[0]}">
+                            <i class="fas fa-shopping-basket"></i>
+                            <span>Adaugă în Coș</span>
+                        </button>
+                    </div>
+                `;
+            }
+
+            // Render products for current page
+            function renderProducts(page) {
+                const productsList = Object.values(products).slice(3); // Skip first 3 products
+                const start = (page - 1) * productsPerPage;
+                const end = start + productsPerPage;
+                const pageProducts = productsList.slice(start, end);
+
+                productGrid.innerHTML = pageProducts.map(product => createProductCard(product)).join('');
+
+                // Initialize cart functionality for new products
+                if (window.cart) {
+                    document.querySelectorAll('.add-to-cart').forEach(btn => {
+                        btn.addEventListener('click', function(e) {
+                            e.preventDefault();
+                            const productData = {
+                                id: this.dataset.id,
+                                name: this.dataset.name,
+                                price: parseFloat(this.dataset.price),
+                                image: this.dataset.image,
+                                quantity: 1,
+                                cover: 'standard'
+                            };
+                            window.cart.addToCart(productData);
+                            
+                            // Add animation
+                            gsap.to(this, {
+                                scale: 0.95,
+                                duration: 0.1,
+                                yoyo: true,
+                                repeat: 1,
+                                onComplete: () => {
+                                    window.cart.showNotification('Produsul a fost adăugat în coș');
+                                }
+                            });
+                        });
+                    });
+                }
+            }
+
+            // Generate pagination numbers
+            function generatePagination() {
+                const totalProducts = Object.values(products).slice(3).length; // Use length of filtered products
+                const totalPages = Math.ceil(totalProducts / productsPerPage);
+                let paginationHtml = '';
+
+                for (let i = 1; i <= totalPages; i++) {
+                    paginationHtml += `
+                        <button class="pagination-button ${i === currentPage ? 'active' : ''}" data-page="${i}">
+                            ${i}
+                        </button>
+                    `;
+                }
+
+                paginationNumbers.innerHTML = paginationHtml;
+
+                // Add click handlers for page buttons
+                const pageButtons = paginationNumbers.querySelectorAll('.pagination-button');
+                pageButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        const page = parseInt(button.dataset.page);
+                        if (page !== currentPage) {
+                            currentPage = page;
+                            updatePage();
+                        }
+                    });
+                });
+            }
+
+            // Update page content and pagination state
+            function updatePage() {
+                const totalProducts = Object.values(products).slice(3).length; // Use length of filtered products
+                const totalPages = Math.ceil(totalProducts / productsPerPage);
+                
+                // Render products
+                renderProducts(currentPage);
+
+                // Update pagination buttons
+                const pageButtons = paginationNumbers.querySelectorAll('.pagination-button');
+                pageButtons.forEach(button => {
+                    const page = parseInt(button.dataset.page);
+                    button.classList.toggle('active', page === currentPage);
+                });
+
+                // Update prev/next buttons
+                document.getElementById('prevPage').classList.toggle('disabled', currentPage === 1);
+                document.getElementById('nextPage').classList.toggle('disabled', currentPage === totalPages);
+
+                // Scroll to top of products section
+                const productsSection = document.querySelector('.products-section');
+                productsSection.scrollIntoView({ behavior: 'smooth' });
+            }
+
+            // Add click handlers for prev/next buttons
+            document.getElementById('prevPage').addEventListener('click', () => {
+                if (currentPage > 1) {
+                    currentPage--;
+                    updatePage();
+                }
+            });
+
+            document.getElementById('nextPage').addEventListener('click', () => {
+                const totalPages = Math.ceil(Object.values(products).slice(3).length / productsPerPage);
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    updatePage();
+                }
+            });
+
+            // Initialize products and pagination
+            generatePagination();
+            renderProducts(currentPage);
+
+            // Initialize cart
+            if (typeof cart !== 'undefined') {
+                cart.initializeCart();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="ro">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Despre Noi | Bloomery</title>
+        <!-- CSS Files -->
+        <link rel="stylesheet" href="./css/style.css">
+        <link rel="stylesheet" href="./css/responsive.css">
+        <link rel="stylesheet" href="./css/despre-noi.css">
+        <link rel="stylesheet" href="./css/product-detail.css">
+        <link rel="stylesheet" href="./css/cart.css">
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Gilda+Display&family=Italiana&family=Tenor+Sans&display=swap" rel="stylesheet">
+        <!-- GSAP and Lenis -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/ScrollTrigger.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+   
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+       
+           
+    </head>
+    <body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="main-header">
+            <div class="container">
+                <div class="logo">
+                    <a href="./index.html">
+                        <i class="fas fa-flower"></i>
+                        <span class="logo-text">BLOOM<span class="accent">ERY</span></span>
+                    </a>
+                </div>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="./index.html"><i class="fas fa-seedling"></i> Acasa</a></li>
+                        <li><a href="./index.html#bestsellers"><i class="fas fa-crown"></i> Bestsellers</a></li>
+                        <li><a href="./noutati.html"><i class="fas fa-leaf"></i> Colecții</a></li>
+                        <li><a href="./despre-noi.html"><i class="fas fa-heart"></i> Despre Noi</a></li>
+                    </ul>
+                    <div class="mobile-nav-actions">
+                        <a href="#search" class="action-icon search-icon" title="Căutare">
+                            <i class="fas fa-search"></i>
+                        </a>
+                        <a href="#account" class="action-icon account-icon" title="Contul Meu">
+                            <i class="fas fa-user"></i>
+                        </a>
+                        <div class="cart-wrapper">
+                            <a href="#cart" class="action-icon cart-icon" title="Coș">
+                                <i class="fas fa-shopping-basket"></i>
+                                <span class="cart-count">0</span>
+                            </a>
+                        </div>
+                    </div>
+                </nav>
+                <button class="burger-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <div class="header-actions">
+                    <a href="#search" class="action-icon search-icon" title="Căutare">
+                        <i class="fas fa-search"></i>
+                    </a>
+                    <a href="#account" class="action-icon account-icon" title="Contul Meu">
+                        <i class="fas fa-user"></i>
+                    </a>
+                    <div class="cart-wrapper">
+                        <a href="#cart" class="action-icon cart-icon" title="Coș">
+                            <i class="fas fa-shopping-basket"></i>
+                            <span class="cart-count">0</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+<!-- About Section -->
+<section class="service despre-section" id="despre">
+    <div class="container">
+        <div class="service-content">
+            <div class="service-text">
+                <h1>
+                    <span class="underline logo-text">BLOOM<span class="accent">ERY</span></span> înseamnă<br>
+                    pasiune pentru <span class="power">frumos</span><br>
+                    și eleganță
+                </h1>
+                <p>Cu o experiență de peste 10 ani în arta florală, creăm buchete premium care transformă momentele speciale în amintiri de neuitat</p>
+                <a href="#colectie" class="btn view-story">VEZI COLECȚIA</a>
+            </div>
+            <div class="service-images">
+                <!-- Background squares -->
+                <div class="decorative-square square-1"></div>
+                <div class="decorative-square square-2"></div>
+                
+                <!-- Image group 1 -->
+                <div class="image-group image-group-1">
+                    <img src="./images/916//10.jpeg" alt="Aranjament floral elegant" class="service-image">
+                    <div class="image-shadow"></div>
+                </div>
+                
+                <!-- Image group 2 -->
+                <div class="image-group image-group-2">
+                    <img src="./images/916/444.jpeg" alt="Buchet luxuriant" class="service-image">
+                    <div class="image-shadow"></div>
+                </div>
+            </div>
+        </div>
+        <!-- Add values section -->
+        <div class="shipping-info">
+            <div class="info-item">
+                <img src="./images/gift-service.svg" alt="Experiență">
+                <span class="info-text">PESTE 10 ANI <span class="info-detail">DE EXPERIENȚĂ</span></span>
+            </div>
+            <div class="info-item">
+                <img src="./images/rose-care.svg" alt="Calitate">
+                <span class="info-text">CALITATE PREMIUM</span>
+            </div>
+            <div class="info-item">
+                <img src="./images/rose-delivery.svg" alt="Livrare">
+                <span class="info-text">LIVRARE RAPIDĂ</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Best Products -->
+<section class="best-products">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-accent">Colecția Noastră</span>
+            <h2 class="section-title">Cele Mai Apreciate Creații</h2>
+            <div class="collection-stats">
+                <div class="stat-item">
+                    <i class="fas fa-heart"></i>
+                    <span>10,000+ Buchete Livrate</span>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-star"></i>
+                    <span>4.8/5 Rating Mediu</span>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-smile"></i>
+                    <span>98% Clienți Mulțumiți</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="featured-collection">
+
+            <div class="minimal-grid">
+                <div class="minimal-card">
+                    <div class="minimal-image">
+                        <img src="./images/10.webp" alt="Buchet VIP Trandafiri">
+                        <div class="minimal-overlay">
+                            <span class="minimal-price">2.222 RON</span>
+                        </div>
+              
+                    </div>
+                    <div class="minimal-info">
+                        <h3>Buchet VIP 101 Trandafiri</h3>
+                        <div class="minimal-meta">
+                            <span class="minimal-rating">
+                                <i class="fas fa-star"></i>
+                                4.6/5
+                            </span>
+                            <span class="minimal-badge">Luxury</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="minimal-card">
+                    <div class="minimal-image">
+                        <img src="./images/bune/g22.webp" alt="Buchet Premium Trandafiri">
+                        <div class="minimal-overlay">
+                            <span class="minimal-price">1.111 RON</span>
+                        </div>
+                  
+                    </div>
+                    <div class="minimal-info">
+                        <h3>Buchet VIP 51 Trandafiri</h3>
+                        <div class="minimal-meta">
+                            <span class="minimal-rating">
+                                <i class="fas fa-star"></i>
+                                4.5/5
+                            </span>
+                            <span class="minimal-badge">Premium</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="minimal-card">
+                    <div class="minimal-image">
+                        <img src="./images/bune/mobi66.webp" alt="Buchet Classic Trandafiri">
+                        <div class="minimal-overlay">
+                            <span class="minimal-price">1.111 RON</span>
+                        </div>
+                   
+                    </div>
+                    <div class="minimal-info">
+                        <h3>Buchet NORMAL 101 Trandafiri</h3>
+                        <div class="minimal-meta">
+                            <span class="minimal-rating">
+                                <i class="fas fa-star"></i>
+                                4.4/5
+                            </span>
+                            <span class="minimal-badge">Classic</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="collection-features">
+            <div class="feature">
+                <i class="fas fa-truck"></i>
+                <h4>Livrare Gratuită</h4>
+                <p>Pentru toate comenzile din București</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-clock"></i>
+                <h4>Prospețime Garantată</h4>
+                <p>7 zile garanție pentru prospețime</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-shield-alt"></i>
+                <h4>Comandă Sigură</h4>
+                <p>Plată securizată și livrare asigurată</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-gift"></i>
+                <h4>Ambalaj Premium</h4>
+                <p>Fiecare buchet în cutie elegantă</p>
+            </div>
+        </div>
+
+        <div class="collection-cta parallax-section">
+            <div class="parallax-bg" data-parallax="scroll" style="background-image: url('./images/916/444.jpeg');"></div>
+            <div class="overlay-dark"></div>
+            <div class="cta-content">
+                <span class="cta-accent">Colecția Noastră</span>
+                <h3>Descoperă Întreaga Colecție</h3>
+                <p>Peste 100 de modele de buchete pentru orice ocazie specială</p>
+                <div class="cta-buttons">
+                    <a href="#" class="cta-button primary">Vezi Toate Buchetele</a>
+                    <a href="#" class="cta-button secondary">Contactează-ne</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-top">
+                <div class="footer-section contact-section">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <span>Telefon</span>
+                                <a href="tel:+40722123456">+40 722 123 456</a>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <span>Email</span>
+                                <a href="mailto:contact@bloomery.ro">contact@bloomery.ro</a>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <span>Adresă</span>
+                                <a href="https://goo.gl/maps" target="_blank">Strada Florilor 123, București</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-section links-section">
+                    <h3>Informații Utile</h3>
+                    <ul>
+                        <li><a href="#">Despre Noi</a></li>
+                        <li><a href="#">Termeni și Condiții</a></li>
+                        <li><a href="#">Politica de Confidențialitate</a></li>
+                        <li><a href="#">Politica de Retur</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section schedule-section">
+                    <h3>Program</h3>
+                    <ul class="schedule-list">
+                        <li>
+                            <span class="day">Luni - Vineri</span>
+                            <span class="hours">09:00 - 20:00</span>
+                        </li>
+                        <li>
+                            <span class="day">Sâmbătă</span>
+                            <span class="hours">10:00 - 18:00</span>
+                        </li>
+                        <li>
+                            <span class="day">Duminică</span>
+                            <span class="hours">10:00 - 16:00</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-section social-section">
+                    <h3>Urmărește-ne</h3>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Pinterest">
+                            <i class="fab fa-pinterest-p"></i>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="TikTok">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+                    <div class="newsletter">
+                        <h4>Newsletter</h4>
+                        <p>Abonează-te pentru noutăți și oferte speciale</p>
+                        <form class="newsletter-form">
+                            <input type="email" placeholder="Adresa ta de email" required>
+                            <button type="submit">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-bottom-content">
+                <p>&copy; 2024 Bloomery. Toate drepturile rezervate.</p>
+                <div class="payment-methods">
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-apple-pay"></i>
+                    <i class="fab fa-google-pay"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div id="cartModal" class="cart-modal">
+        <div class="cart-modal-content">
+            <div class="cart-modal-header">
+                <h2>Coșul meu</h2>
+                <button class="close-cart">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="cart-items-container">
+                <!-- Cart items will be dynamically added here -->
+            </div>
+            <div class="cart-summary">
+                <div class="cart-total">
+                    <span class="total-label">Total</span>
+                    <span class="total-amount">0.00 RON</span>
+                </div>
+                <button class="checkout-button">
+                    Finalizează Comanda
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="./js/parallax.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Smooth scroll effect
+            const lenis = new Lenis({
+                duration: 1.2,
+                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                smooth: true
+            });
+
+            function raf(time) {
+                lenis.raf(time);
+                requestAnimationFrame(raf);
+            }
+
+            requestAnimationFrame(raf);
+
+            // Fade in elements on scroll
+            const observerOptions = {
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.gallery-item, .story-text, h1').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.8s ease, transform 0.8s cubic-bezier(0.215, 0.61, 0.355, 1)';
+                observer.observe(el);
+            });
+        });
+    </script>
+    <script src="./js/main.js"></script>
+    <script src="./js/cart.js"></script>
+</body>
+</html>

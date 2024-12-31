@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Page Title</title>
+    
+    <!-- 1. Include required libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/gsap.min.js"></script>
+    <script src="https://unpkg.com/@barba/core"></script>
+    
+    <!-- 2. Include our transition files -->
+    <link rel="stylesheet" href="css/barba-transitions.css">
+    <script src="js/barba-transitions.js"></script>
+    
+    <!-- Your other styles -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- 3. Add loading container -->
+    <div class="loading-container"></div>
+    
+    <!-- 4. Add Barba wrapper and container -->
+    <div data-barba="wrapper">
+        <main data-barba="container" data-barba-namespace="your-page-name">
+            <!-- Your existing page content goes here -->
+            <div class="your-content">
+                <!-- Add barba-link class to links you want to animate -->
+                <a href="other-page.html" class="barba-link">Go to Other Page</a>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

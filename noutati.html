@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noutăți | Bloomery</title>
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/responsive.css">
+    
+    <link rel="stylesheet" href="./css/cart.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Italiana&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- GSAP and Lenis -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+    <script src="./js/components.js"></script>
+    <script src="https://unpkg.com/split-type"></script>
+</head>
+<style>
+    * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F5F5F5;
+            color: #1A1A1A;
+            overflow-x: hidden;
+        }
+
+        .hero-noutati {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 2rem;
+            position: relative;
+            background-color: #faf7f5;
+        }
+
+        .hero-content-noutati {
+            text-align: center;
+            max-width: 90rem;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .welcome-text-noutati {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(0.875rem, 1.2vw, 1rem);
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 1em;
+            margin-bottom: 2rem;
+            color: #9a8a78;
+            opacity: 0.9;
+            transform: translateX(0.5em); /* Compensate for letter-spacing */
+            margin-top: 2rem;
+        }
+
+        .hero-title-noutati {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(4rem, 15vw, 12rem);
+            line-height: 0.9;
+            font-weight: 300;
+            margin: 0 auto 1.5rem;
+            color: #2d2d2d;
+            max-width: 15ch;
+            letter-spacing: -0.02em;
+            position: relative;
+        }
+
+        .hero-title-noutati::after {
+            content: 'Esență Florală';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 40%, rgba(154, 138, 120, 0.2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            z-index: 1;
+        }
+
+        .hero-subtitle-noutati {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.25rem, 2vw, 1.75rem);
+            font-weight: 300;
+            line-height: 1.6;
+            max-width: 45ch;
+            margin: 0 auto;
+            color: #666;
+            font-style: italic;
+        }
+
+        .hero-divider {
+            width: 1px;
+            height: 120px;
+            background: linear-gradient(to bottom, transparent, #9a8a78, transparent);
+            margin: 3rem auto;
+            opacity: 0.3;
+        }
+
+        @media (max-width: 768px) {
+            .hero-noutati {
+                padding: 3rem 1.5rem;
+            }
+
+            .welcome-text-noutati {
+                letter-spacing: 0.5em;
+                transform: translateX(0.25em);
+            }
+
+            .hero-divider {
+                height: 80px;
+                margin: 2rem auto;
+            }
+        }
+
+        /* Subtle animation for the welcome text */
+        @keyframes fadeInSlide {
+            from {
+                opacity: 0;
+                transform: translateY(20px) translateX(0.5em);
+            }
+            to {
+                opacity: 0.9;
+                transform: translateY(0) translateX(0.5em);
+            }
+        }
+
+        .welcome-text-noutati {
+            animation: fadeInSlide 1.5s ease-out forwards;
+        }
+
+        .gallery-noutati {
+            padding: 5rem 1rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            aspect-ratio: 9/16;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease-out;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        
+        
+
+        
+        @media (min-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Inter', sans-serif;
+        background-color: #F5F5F5;
+        color: #1A1A1A;
+        overflow-x: hidden;
+    }
+
+    .hero-noutati {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 4rem 2rem;
+        position: relative;
+        background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.8)), url('../product-image/bg.jpeg');
+        background-size: cover;
+        background-position: center;
+        
+    }
+
+    .hero-content-noutati {
+        text-align: center;
+        max-width: 90rem;
+        margin: 0 auto;
+        position: relative;
+    }
+
+    .welcome-text-noutati {
+        font-family: 'Montserrat', sans-serif;
+        font-size: clamp(0.875rem, 1.2vw, 1rem);
+        font-weight: 300;
+        text-transform: uppercase;
+        letter-spacing: 1em;
+        margin-bottom: 2rem;
+        color: #9a8a78;
+        opacity: 0.9;
+        transform: translateX(0.5em); /* Compensate for letter-spacing */
+    }
+
+    .hero-title-noutati {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: clamp(4rem, 15vw, 12rem);
+        line-height: 0.9;
+        font-weight: 300;
+        margin: 0 auto 1.5rem;
+        color: #2d2d2d;
+        max-width: 15ch;
+        letter-spacing: -0.02em;
+        position: relative;
+    }
+
+    .hero-title-noutati::after {
+        content: 'Esență Florală';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(45deg, transparent 40%, rgba(154, 138, 120, 0.2));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        z-index: 1;
+    }
+
+    .hero-subtitle-noutati {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: clamp(1.25rem, 2vw, 1.75rem);
+        font-weight: 300;
+        line-height: 1.6;
+        max-width: 45ch;
+        margin: 0 auto;
+        color: #666;
+        font-style: italic;
+    }
+
+    .gallery-noutati {
+        padding: 5rem 2rem;
+        max-width: 1600px;
+        margin: 0 auto;
+        
+       
+    }
+
+    .gallery-grid {
+        
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        padding: 2rem;
+        background: #fcf0f1;
+        border-radius: 60px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+        border: 1px solid #c8c8c8;
+    }
+
+    .gallery-item {
+        position: relative;
+        aspect-ratio: 9/16;
+        overflow: hidden;
+        cursor: pointer;
+        border-radius: 15px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .gallery-item:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    }
+
+    .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.7s ease-out;
+    }
+
+    .gallery-item:hover img {
+        transform: scale(1.1);
+    }
+
+    @media (min-width: 768px) {
+        .gallery-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .gallery-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    /* Smooth scroll behavior */
+    html {
+        scroll-behavior: smooth;
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+        width: 12px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 6px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+    
+</style>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="main-header">
+            <div class="container">
+                <div class="logo">
+                    <a href="./index.html">
+                        <i class="fas fa-flower"></i>
+                        <span class="logo-text">BLOOM<span class="accent">ERY</span></span>
+                    </a>
+                </div>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="./index.html"><i class="fas fa-seedling"></i> Acasa</a></li>
+                        <li><a href="./index.html#bestsellers"><i class="fas fa-crown"></i> Bestsellers</a></li>
+                        <li><a href="./noutati.html"><i class="fas fa-leaf"></i> Colecții</a></li>
+                        <li><a href="./despre-noi.html"><i class="fas fa-heart"></i> Despre Noi</a></li>
+                    </ul>
+                    <div class="mobile-nav-actions">
+                        <a href="#search" class="action-icon search-icon" title="Căutare">
+                            <i class="fas fa-search"></i>
+                        </a>
+                        <a href="#account" class="action-icon account-icon" title="Contul Meu">
+                            <i class="fas fa-user"></i>
+                        </a>
+                        <div class="cart-wrapper">
+                            <a href="#cart" class="action-icon cart-icon" title="Coș">
+                                <i class="fas fa-shopping-basket"></i>
+                                <span class="cart-count">0</span>
+                            </a>
+                        </div>
+                    </div>
+                </nav>
+                <button class="burger-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <div class="header-actions">
+                    <a href="#search" class="action-icon search-icon" title="Căutare">
+                        <i class="fas fa-search"></i>
+                    </a>
+                    <a href="#account" class="action-icon account-icon" title="Contul Meu">
+                        <i class="fas fa-user"></i>
+                    </a>
+                    <div class="cart-wrapper">
+                        <a href="#cart" class="action-icon cart-icon" title="Coș">
+                            <i class="fas fa-shopping-basket"></i>
+                            <span class="cart-count">0</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero-noutati">
+        <div class="hero-content-noutati">
+            <p class="welcome-text-noutati">Bun venit la</p>
+            <h1 class="hero-title-noutati">Esență Florală</h1>
+           
+            <p class="hero-subtitle-noutati">Unde frumusețea naturii se întâlnește cu expresia artistică, creând momente atemporale prin aranjamente florale atent selecționate</p>
+        </div>
+    </section>
+
+    <section class="gallery-noutati">
+     
+        <div class="gallery-grid" id="gallery-grid"></div>
+    </section>
+
+    <!-- Cart Modal -->
+    <div id="cartModal" class="cart-modal">
+        <div class="cart-modal-content">
+            <div class="cart-modal-header">
+                <h2>Coșul meu</h2>
+                <button class="close-cart">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="cart-items-container">
+                <!-- Cart items will be dynamically added here -->
+            </div>
+            <div class="cart-summary">
+                <div class="cart-total">
+                    <span class="total-label">Total</span>
+                    <span class="total-amount">0.00 RON</span>
+                </div>
+                <button class="checkout-button">
+                    Finalizează Comanda
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-top">
+                <div class="footer-section contact-section">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Strada Florilor 123, București</li>
+                        <li><i class="fas fa-phone"></i> +40 721 234 567</li>
+                        <li><i class="fas fa-envelope"></i> contact@bloomery.ro</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Program</h3>
+                    <ul>
+                        <li>Luni - Vineri: 09:00 - 20:00</li>
+                        <li>Sâmbătă: 10:00 - 18:00</li>
+                        <li>Duminică: 10:00 - 16:00</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Informații</h3>
+                    <ul>
+                        <li><a href="#">Despre Noi</a></li>
+                        <li><a href="#">Termeni și Condiții</a></li>
+                        <li><a href="#">Politica de Confidențialitate</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Newsletter</h3>
+                    <p>Abonează-te pentru noutăți și oferte speciale</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Adresa ta de email">
+                        <button type="submit">Abonare</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+    <script>
+ // Initialize GSAP
+    gsap.registerPlugin(ScrollTrigger);
+
+// Initialize Lenis for smooth scrolling
+const lenis = new Lenis({
+    duration: 1.2,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    touchMultiplier: 2,
+});
+
+function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+}
+
+requestAnimationFrame(raf);
+
+// Hero text animation
+const title = new SplitType('.hero-title-noutati', {
+    types: 'chars',
+    tagName: 'span'
+});
+
+gsap.from(title.chars, {
+    opacity: 0,
+    y: 100,
+    duration: 1,
+    stagger: 0.04,
+    ease: 'power4.out'
+});
+
+// Gallery images
+const images = [
+    { id: 1, url: 'images/916/111.png' },
+    { id: 2, url: 'images/916/111.jpeg' },
+    { id: 3, url: 'images/916/444.jpeg' },
+    { id: 4, url: 'images/916/shop1.jpeg' },
+    { id: 5, url: 'images/916/shop2.jpeg' },
+    { id: 6, url: 'images/916/shop5.jpeg' },
+    { id: 7, url: 'images/916/gg.jpeg' },
+    { id: 8, url: 'images/916/shop3.jpeg' },
+    { id: 9, url: 'images/916/shop4.jpeg' }
+];
+
+// Create gallery items
+const galleryGrid = document.getElementById('gallery-grid');
+images.forEach(image => {
+    const item = document.createElement('div');
+    item.className = 'gallery-item';
+    item.innerHTML = `<img src="${image.url}" alt="Gallery ${image.id}">`;
+    galleryGrid.appendChild(item);
+});
+
+// Gallery scroll animations
+document.querySelectorAll('.gallery-item').forEach((item, index) => {
+    gsap.from(item, {
+        scrollTrigger: {
+            trigger: item,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: 1,
+        },
+        y: index % 2 === 0 ? 100 : -100,
+        opacity: 0.5,
+    });
+});
+
+
+    </script>
+    <!-- Scripts -->
+    <script src="./js/main.js"></script>
+    <script src="./js/cart.js"></script>
+</body>
+</html>

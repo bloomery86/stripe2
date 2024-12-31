@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloomery - Detalii Produs</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/product-detail.css">
+    <link rel="stylesheet" href="css/cart.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="main-header">
+            <div class="container">
+                <div class="logo">
+                    <a href="/">
+                        <i class="fas fa-flower"></i>
+                        <span class="logo-text">BLOOM<span class="accent">ERY</span></span>
+                    </a>
+                </div>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="/"><i class="fas fa-seedling"></i> Acasa</a></li>
+                        <li><a href="#bestsellers"><i class="fas fa-crown"></i> Bestsellers</a></li>
+                        <li><a href="/noutati.html"><i class="fas fa-leaf"></i> Colecții</a></li>
+                        <li><a href="/despre-noi.html"><i class="fas fa-heart"></i> Despre Noi</a></li>
+                    </ul>
+                    <div class="mobile-nav-actions">
+                        <a href="#search" class="action-icon search-icon" title="Căutare">
+                            <i class="fas fa-search"></i>
+                        </a>
+                        <a href="#account" class="action-icon account-icon" title="Contul Meu">
+                            <i class="fas fa-user"></i>
+                        </a>
+                        <div class="cart-wrapper">
+                            <a href="#cart" class="action-icon cart-icon" title="Coș">
+                                <i class="fas fa-shopping-basket"></i>
+                                <span class="cart-count">0</span>
+                            </a>
+                        </div>
+                    </div>
+                </nav>
+                <button class="burger-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <div class="header-actions">
+                    <a href="#search" class="action-icon search-icon" title="Căutare">
+                        <i class="fas fa-search"></i>
+                    </a>
+                    <a href="#account" class="action-icon account-icon" title="Contul Meu">
+                        <i class="fas fa-user"></i>
+                    </a>
+                    <div class="cart-wrapper">
+                        <a href="#cart" class="action-icon cart-icon" title="Coș">
+                            <i class="fas fa-shopping-basket"></i>
+                            <span class="cart-count">0</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Product Detail Section -->
+    <section class="product-detail">
+        <div class="container">
+            <nav class="product-breadcrumb">
+                <a href="/">Acasă</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="/buchete">Buchete</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Buchet VIP 101 Trandafiri</span>
+            </nav>
+            <div class="product-grid">
+                <div class="product-gallery">
+                    <div class="main-image-card">
+                        <div class="image-overlay"></div>
+                        <img src="product-image/101 VIP ROSU/4.jpg" alt="Buchet VIP 51 Trandafiri" id="mainImage">
+                        <span class="discount-badge">
+                            <i class="fas fa-tag"></i>
+                            -38%
+                        </span>
+                        <div class="image-actions">
+                            <button class="action-btn zoom-btn" title="Zoom">
+                                <i class="fas fa-search-plus"></i>
+                            </button>
+                            <button class="action-btn share-btn" title="Share">
+                                <i class="fas fa-share-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="thumbnail-grid">
+                        <div class="thumbnail-card active">
+                            <div class="image-wrapper">
+                                <img src="product-image/101 VIP ROSU/5.jpg" alt="Thumbnail 1">
+                                <div class="hover-overlay">
+                                    <i class="fas fa-expand"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="thumbnail-card">
+                            <div class="image-wrapper">
+                                <img src="product-image/101 VIP ROSU/2.jpg" alt="Thumbnail 2">
+                                <div class="hover-overlay">
+                                    <i class="fas fa-expand"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="thumbnail-card">
+                            <div class="image-wrapper">
+                                <img src="product-image/101 VIP ROSU/3.jpg" alt="Thumbnail 3">
+                                <div class="hover-overlay">
+                                    <i class="fas fa-expand"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="thumbnail-card">
+                            <div class="image-wrapper">
+                                <img src="product-image/101 VIP ROSU/4.jpg" alt="Thumbnail 3">
+                                <div class="hover-overlay">
+                                    <i class="fas fa-expand"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-header">
+                        <h1 class="product-title">Buchet VIP 101 Trandafiri</h1>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span>(4.6/5 din 33 review-uri)</span>
+                        </div>
+                    </div>
+
+                    <div class="product-options-card">
+                        <div class="price-section">
+                            <div class="price-wrapper">
+                                <span class="original-price">3.500 RON</span>
+                                <span class="current-price">2.222 RON</span>
+                            </div>
+                            <div class="price-info">
+                                <span class="save-amount">Economisești: 1.278 RON</span>
+                                <span class="availability">În stoc - Livrare Rapidă</span>
+                            </div>
+                        </div>
+
+                        <div class="options-section">
+                            <div class="option-group">
+                                <label class="option-label">Culoare Trandafiri</label>
+                                <div class="color-options">
+                                    <button class="color-btn active" data-color="rosu" style="--color: #e74c3c">
+                                        <span>Roșu</span>
+                                    </button>
+                                    <button class="color-btn" data-color="roz" style="--color: #ff9ff3">
+                                        <span>Roz</span>
+                                    </button>
+                                    <button class="color-btn" data-color="alb" style="--color: #fff">
+                                        <span>Alb</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="option-group">
+                                <label class="option-label">Ambalaj</label>
+                                <div class="cover-options">
+                                    <button class="cover-btn active" data-cover="standard">
+                                        <img src="product-image/f1.jpg" alt="Standard">
+                                        <span>Standard</span>
+                                    </button>
+                                    <button class="cover-btn" data-cover="premium">
+                                        <img src="product-image/f2.jpg" alt="Premium">
+                                        <span>Premium +25 Lei</span>
+                                    </button>
+                                    <button class="cover-btn" data-cover="deluxe">
+                                        <img src="product-image/f3.jpg" alt="Deluxe">
+                                        <span>Deluxe +45 Lei</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-actions">
+                            <div class="quantity-selector">
+                                <button class="qty-btn minus"><i class="fas fa-minus"></i></button>
+                                <input type="number" class="qty-input" value="1" min="1">
+                                <button class="qty-btn plus"><i class="fas fa-plus"></i></button>
+                            </div>
+                            <button class="add-to-cart-btn" data-id="1" data-name="Buchet VIP 101 Trandafiri" data-price="2222.00" data-image="images/10.jpg">
+                                <i class="fas fa-shopping-basket"></i>
+                                Adaugă în Coș
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="info-cards">
+                        <div class="info-card delivery-card">
+                            <div class="card-header">
+                                <i class="fas fa-truck-fast"></i>
+                                <h3>Livrare Premium</h3>
+                            </div>
+                            <div class="card-content">
+                                <div class="info-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <div>
+                                        <strong>București:</strong> 50 lei
+                                        <span>Livrare în 2-4 ore</span>
+                                    </div>
+                                </div>
+                                <div class="info-item">
+                                    <i class="fas fa-map"></i>
+                                    <div>
+                                        <strong>Ilfov:</strong> 100 lei
+                                        <span>Livrare în aceeași zi</span>
+                                    </div>
+                                </div>
+                                <div class="info-item">
+                                    <i class="far fa-clock"></i>
+                                    <div>
+                                        <strong>Program Livrări:</strong>
+                                        <span>Luni - Sâmbătă: 09:00 - 19:00</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="info-card features-card">
+                            <div class="card-header">
+                                <i class="fas fa-leaf"></i>
+                                <h3>Specificații Produs</h3>
+                            </div>
+                            <div class="card-content">
+                                <div class="info-item">
+                                    <i class="fas fa-ruler"></i>
+                                    <div>
+                                        <strong>Dimensiuni:</strong>
+                                        <span>Înălțime: 60-65 cm</span>
+                                    </div>
+                                </div>
+                                <div class="info-item">
+                                    <i class="fas fa-temperature-low"></i>
+                                    <div>
+                                        <strong>Păstrare Optimă:</strong>
+                                        <span>5-8 zile la 20-22°C</span>
+                                    </div>
+                                </div>
+                                <div class="info-item">
+                                    <i class="fas fa-box"></i>
+                                    <div>
+                                        <strong>Include:</strong>
+                                        <span>Ambalaj premium și felicitare</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Cart Modal -->
+    <div id="cartModal" class="cart-modal">
+        <div class="cart-modal-content">
+            <div class="cart-modal-header">
+                <h2>Coșul meu</h2>
+                <button class="close-cart">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="cart-items-container">
+                <!-- Cart items will be dynamically added here -->
+            </div>
+            <div class="cart-summary">
+                <div class="cart-total">
+                    <span class="total-label">Total</span>
+                    <span class="total-amount">0.00 RON</span>
+                </div>
+                <button class="checkout-button">
+                    Finalizează Comanda
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="js/product-gallery.js"></script>
+    <script src="js/nav.js"></script>
+    <script src="js/cart.js"></script>
+</body>
+</html>

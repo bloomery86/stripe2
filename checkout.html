@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finalizare Comandă | Bloomery</title>
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/responsive.css">
+    <link rel="stylesheet" href="./css/checkout.css">
+    <script src="https://js.stripe.com/v3/"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="main-header">
+            <div class="container">
+                <div class="logo">
+                    <a href="./index.html">
+                        <i class="fas fa-flower"></i>
+                        <span class="logo-text">BLOOM<span class="accent">ERY</span></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="checkout-page">
+        <div class="container">
+            <div class="checkout-header">
+                <h1>Finalizare Comandă</h1>
+                <div class="checkout-steps">
+                    <div class="step active">
+                        <span class="step-number">1</span>
+                        <span class="step-text">Coș</span>
+                    </div>
+                    <div class="step-line"></div>
+                    <div class="step active">
+                        <span class="step-number">2</span>
+                        <span class="step-text">Livrare</span>
+                    </div>
+                    <div class="step-line"></div>
+                    <div class="step">
+                        <span class="step-number">3</span>
+                        <span class="step-text">Plată</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="checkout-grid">
+                <div class="checkout-form-section">
+                    <form id="checkoutForm">
+                        <div class="form-section">
+                            <h2>Detalii Livrare</h2>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="firstName">Prenume</label>
+                                    <input type="text" id="firstName" name="firstName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName">Nume</label>
+                                    <input type="text" id="lastName" name="lastName" required>
+                                </div>
+                                <div class="form-group full-width">
+                                    <label for="email">Email</label>
+                                    <input type="email" id="email" name="email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Telefon</label>
+                                    <input type="tel" id="phone" name="phone" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="county">Județ</label>
+                                    <select id="county" name="county" required>
+                                        <option value="">Selectează județul</option>
+                                        <option value="bucuresti">București</option>
+                                        <option value="cluj">Cluj</option>
+                                        <option value="iasi">Iași</option>
+                                    </select>
+                                </div>
+                                <div class="form-group full-width">
+                                    <label for="address">Adresă</label>
+                                    <input type="text" id="address" name="address" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h2>Metoda de Livrare</h2>
+                            <div class="delivery-options">
+                                <label class="delivery-option">
+                                    <input type="radio" name="deliveryMethod" value="courier" checked>
+                                    <div class="option-content">
+                                        <div class="option-header">
+                                            <i class="fas fa-truck"></i>
+                                            <div class="option-text">
+                                                <h3>Curier</h3>
+                                                <p>Livrare în 24-48 ore lucrătoare</p>
+                                            </div>
+                                        </div>
+                                        <span class="price">15 lei</span>
+                                    </div>
+                                </label>
+                                <label class="delivery-option">
+                                    <input type="radio" name="deliveryMethod" value="pickup">
+                                    <div class="option-content">
+                                        <div class="option-header">
+                                            <i class="fas fa-store"></i>
+                                            <div class="option-text">
+                                                <h3>Ridicare din Magazin</h3>
+                                                <p>Disponibil pentru ridicare în 2 ore</p>
+                                            </div>
+                                        </div>
+                                        <span class="price">Gratuit</span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        <button type="submit" class="checkout-button">Plătește Acum</button>
+                    </form>
+                </div>
+
+                <div class="order-summary">
+                    <div class="summary-card">
+                        <h2>Sumar Comandă</h2>
+                        <div class="cart-items">
+                            <!-- Cart items will be dynamically added here -->
+                        </div>
+                        <div class="summary-totals">
+                            <div class="summary-row">
+                                <span>Subtotal</span>
+                                <span class="subtotal">0 lei</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Transport</span>
+                                <span class="shipping">15 lei</span>
+                            </div>
+                            <div class="summary-row total">
+                                <span>Total</span>
+                                <span class="total-amount">0 lei</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-bottom">
+            <div class="footer-bottom-content">
+                <p>&copy; 2024 Bloomery. Toate drepturile rezervate.</p>
+                <div class="payment-methods">
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-apple-pay"></i>
+                    <i class="fab fa-google-pay"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="./js/checkout.js"></script>
+    <script src="./js/stripe-payment.js"></script>
+</body>
+</html>

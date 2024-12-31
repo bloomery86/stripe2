@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floral Gallery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Italiana&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <script src="https://unpkg.com/split-type"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F5F5F5;
+            color: #1A1A1A;
+            overflow-x: hidden;
+        }
+
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 64rem;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .welcome-text {
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 1.5rem;
+            color: rgba(26, 26, 26, 0.6);
+        }
+
+        .hero-title {
+            font-family: 'Italiana', serif;
+            font-size: clamp(3rem, 10vw, 8rem);
+            margin-bottom: 2rem;
+            line-height: 1;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            font-weight: 300;
+            max-width: 35ch;
+            margin: 0 auto;
+            line-height: 1.75;
+            color: rgba(26, 26, 26, 0.8);
+        }
+
+        .gallery {
+            padding: 5rem 1rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .gallery-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .gallery-title {
+            font-family: 'Italiana', serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 1rem;
+        }
+
+        .gallery-subtitle {
+            color: rgba(26, 26, 26, 0.6);
+            max-width: 35ch;
+            margin: 0 auto;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            aspect-ratio: 9/16;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease-out;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transition: opacity 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gallery-item:hover .gallery-item-overlay {
+            opacity: 1;
+        }
+
+        .overlay-text {
+            color: white;
+            font-family: 'Italiana', serif;
+            font-size: 1.5rem;
+            transform: translateY(1rem);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover .overlay-text {
+            transform: translateY(0);
+        }
+
+        .video-section {
+            padding: 5rem 1rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .video-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .video-title {
+            font-family: 'Italiana', serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 1rem;
+        }
+
+        .video-subtitle {
+            color: rgba(26, 26, 26, 0.6);
+            max-width: 35ch;
+            margin: 0 auto;
+        }
+
+        .video-container {
+            position: relative;
+            aspect-ratio: 16/9;
+            overflow: hidden;
+            border-radius: 0.5rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scale(1.05);
+            transition: transform 0.7s;
+        }
+
+        .video-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s;
+        }
+
+        .video-overlay p {
+            color: white;
+            font-family: 'Italiana', serif;
+            font-size: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="hero-content">
+            <p class="welcome-text">Welcome to</p>
+            <h1 class="hero-title">Floral Essence</h1>
+            <p class="hero-subtitle">Where nature's beauty meets artistic expression, creating timeless moments through carefully curated floral arrangements</p>
+        </div>
+    </section>
+
+    <section class="gallery">
+        <div class="gallery-header">
+            <h2 class="gallery-title">Our Collection</h2>
+            <p class="gallery-subtitle">Discover our carefully curated selection of nature's finest creations</p>
+        </div>
+        <div class="gallery-grid" id="gallery-grid"></div>
+    </section>
+
+
+
+    <script>
+        // Initialize GSAP
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Initialize Lenis for smooth scrolling
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            touchMultiplier: 2,
+        });
+
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+
+        requestAnimationFrame(raf);
+
+        // Hero text animation
+        const title = new SplitType('.hero-title', {
+            types: 'chars',
+            tagName: 'span'
+        });
+
+        gsap.from(title.chars, {
+            opacity: 0,
+            y: 100,
+            duration: 1,
+            stagger: 0.04,
+            ease: 'power4.out'
+        });
+
+        // Gallery images
+        const images = [
+            { id: 1, url: './images/916/1.jpeg' },
+            { id: 2, url: './images/916/2.jpeg' },
+            { id: 3, url: './images/916/3.jpeg' },
+            { id: 4, url: './images/916/4.jpeg' },
+            { id: 5, url: './images/916/5.jpeg' },
+            { id: 6, url: './images/916/6.jpeg' }
+        ];
+
+        // Create gallery items
+        const galleryGrid = document.getElementById('gallery-grid');
+        images.forEach(image => {
+            const item = document.createElement('div');
+            item.className = 'gallery-item';
+            item.innerHTML = `
+                <img src="${image.url}" alt="Gallery ${image.id}">
+                <div class="gallery-item-overlay">
+                    <p class="overlay-text">View Image</p>
+                </div>
+            `;
+            galleryGrid.appendChild(item);
+        });
+
+        // Gallery scroll animations
+        document.querySelectorAll('.gallery-item').forEach((item, index) => {
+            gsap.from(item, {
+                scrollTrigger: {
+                    trigger: item,
+                    start: 'top bottom',
+                    end: 'bottom top',
+                    scrub: 1,
+                },
+                y: index % 2 === 0 ? 100 : -100,
+                opacity: 0.5,
+            });
+        });
+
+
+    </script>
+</body>
+</html>

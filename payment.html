@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metoda de Plată | Bloomery</title>
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/responsive.css">
+    <link rel="stylesheet" href="./css/checkout.css">
+    <link rel="stylesheet" href="./css/payment.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="main-header">
+            <div class="container">
+                <div class="logo">
+                    <a href="./index.html">
+                        <i class="fas fa-flower"></i>
+                        <span class="logo-text">BLOOM<span class="accent">ERY</span></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="checkout-page">
+        <div class="container">
+            <div class="checkout-header">
+                <h1>Metoda de Plată</h1>
+                <div class="checkout-steps">
+                    <div class="step completed">
+                        <span class="step-number">1</span>
+                        <span class="step-text">Coș</span>
+                    </div>
+                    <div class="step-line"></div>
+                    <div class="step completed">
+                        <span class="step-number">2</span>
+                        <span class="step-text">Livrare</span>
+                    </div>
+                    <div class="step-line"></div>
+                    <div class="step active">
+                        <span class="step-number">3</span>
+                        <span class="step-text">Plată</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="checkout-grid">
+                <div class="checkout-form-section">
+                    <div class="form-section">
+                        <h2>Alege Metoda de Plată</h2>
+                        <div class="payment-options">
+                            <label class="payment-option">
+                                <input type="radio" name="payment" value="cash" checked>
+                                <div class="option-content">
+                                    <div class="option-header">
+                                        <i class="fas fa-money-bill-wave"></i>
+                                        <div class="option-text">
+                                            <h3>Plată la Livrare - Cash</h3>
+                                            <p>Plătești când primești comanda</p>
+                                        </div>
+                                    </div>
+                                    <span class="price">Fără cost adițional</span>
+                                </div>
+                            </label>
+                            <label class="payment-option">
+                                <input type="radio" name="payment" value="card">
+                                <div class="option-content">
+                                    <div class="option-header">
+                                        <i class="fas fa-credit-card"></i>
+                                        <div class="option-text">
+                                            <h3>Plată la Livrare - Card</h3>
+                                            <p>Plătești cu cardul la curier</p>
+                                        </div>
+                                    </div>
+                                    <span class="price">Fără cost adițional</span>
+                                </div>
+                            </label>
+                        </div>
+                        <button type="button" class="confirm-payment-btn">
+                            Confirmă Comanda
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="order-summary">
+                    <div class="summary-card">
+                        <h2>Sumar Comandă</h2>
+                        <div class="cart-items">
+                            <!-- Cart items will be dynamically added here -->
+                        </div>
+                        <div class="summary-totals">
+                            <div class="summary-row">
+                                <span>Subtotal</span>
+                                <span class="subtotal">0 lei</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Transport</span>
+                                <span class="shipping">15 lei</span>
+                            </div>
+                            <div class="summary-row total">
+                                <span>Total</span>
+                                <span class="total-amount">0 lei</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-bottom">
+            <div class="footer-bottom-content">
+                <p>&copy; 2024 Bloomery. Toate drepturile rezervate.</p>
+                <div class="payment-methods">
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-apple-pay"></i>
+                    <i class="fab fa-google-pay"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/share-modal.js"></script>
+    <script src="js/payment.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        (function() {
+            // https://dashboard.emailjs.com/admin
+            emailjs.init("pCLFX07xtMQX_F0cb");
+        })();
+    </script>
+</body>
+</html>

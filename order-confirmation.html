@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmare Comandă | Bloomery</title>
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/responsive.css">
+    <link rel="stylesheet" href="./css/checkout.css">
+    <link rel="stylesheet" href="./css/order-confirmation.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="main-header">
+            <div class="container">
+                <div class="logo">
+                    <a href="./index.html">
+                        <i class="fas fa-flower"></i>
+                        <span class="logo-text">BLOOM<span class="accent">ERY</span></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="confirmation-page">
+        <div class="container">
+            <div class="confirmation-header">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h1>Comandă Confirmată</h1>
+                <p class="order-number">Număr Comandă: <span id="orderNumber">ORD-2024-001</span></p>
+            </div>
+
+            <div class="confirmation-content">
+                <div class="order-details">
+                    <div class="detail-section">
+                        <h2>Detalii Livrare</h2>
+                        <div class="detail-content" id="deliveryDetails">
+                            <!-- Will be filled by JavaScript -->
+                        </div>
+                    </div>
+
+                    <div class="detail-section">
+                        <h2>Metoda de Plată</h2>
+                        <div class="detail-content" id="paymentDetails">
+                            <!-- Will be filled by JavaScript -->
+                        </div>
+                    </div>
+
+                    <div class="detail-section">
+                        <h2>Produse Comandate</h2>
+                        <div class="ordered-items" id="orderedItems">
+                            <!-- Will be filled by JavaScript -->
+                        </div>
+                    </div>
+
+                    <div class="detail-section">
+                        <h2>Sumar Comandă</h2>
+                        <div class="order-summary">
+                            <div class="summary-row">
+                                <span>Subtotal</span>
+                                <span class="subtotal">0 lei</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Transport</span>
+                                <span class="shipping">15 lei</span>
+                            </div>
+                            <div class="summary-row total">
+                                <span>Total</span>
+                                <span class="total-amount">0 lei</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="confirmation-actions">
+                    <button class="print-order">
+                        <i class="fas fa-print"></i>
+                        Printează Comanda
+                    </button>
+                    <a href="./index.html" class="continue-shopping">
+                        <i class="fas fa-arrow-left"></i>
+                        Înapoi la Magazin
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-bottom">
+            <div class="footer-bottom-content">
+                <p>&copy; 2024 Bloomery. Toate drepturile rezervate.</p>
+                <div class="payment-methods">
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-apple-pay"></i>
+                    <i class="fab fa-google-pay"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./js/order-confirmation.js"></script>
+</body>
+</html>
